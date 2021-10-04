@@ -1,0 +1,16 @@
+version: "3.5"
+services:
+  # Presto
+  presto-coordinator:
+    image: prestodb:latest
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./etc:/opt/presto/etc
+    networks:
+      - base_net
+
+networks:
+  base_net:
+    name: bigdatanet
