@@ -1,6 +1,7 @@
 # Prestodb
-This repository contains the docker-compose for "prestodb".
-The Presto UI is available on http:\\localhost:8080
+This repository contains the docker-compose for "prestodb", version "0.262".
+
+The Presto UI is available on http://localhost:8080/ui/
 
 
 ## Table of Contents
