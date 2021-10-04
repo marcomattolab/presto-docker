@@ -51,6 +51,7 @@ $ docker exec -it <container_presto> presto
 
 
 Execute a query against the tpch catalog
+
 ```bash
 $ SELECT
    l.returnflag,
