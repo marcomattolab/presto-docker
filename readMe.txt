@@ -1,16 +1,58 @@
-
-See => https://prestodb.io/docs/current/installation/deployment.html
-
-
->> docker build --build-arg PRESTO_VERSION="0.262" . -t prestodb:latest
->> docker run --name presto prestodb:latest
+# Prestodb
+This repository contains the docker-compose for "prestodb".
+The Presto UI is available on http:\\localhost:8080
 
 
-Use the Presto CLI to connect to Presto:
->> docker exec -it presto presto
+## Table of Contents
+1. [Docker](#docker)
+1. [Docker-compose](#docker-compose)
+1. [Presto-cli](#presto-cli)
+1. [Resources](#resources)
+1. [License](#license)
 
-We can now execute a query against the tpch catalog:
-SELECT
+
+## Docker
+
+Build docker image:
+
+```bash
+$ cd presto-docker
+$ docker build --build-arg PRESTO_VERSION="0.262" . -t prestodb:latest
+```
+
+Rum docker image:
+
+```bash
+$ cd presto-docker
+$ docker run --name presto prestodb:latest
+```
+
+
+## Docker-compose
+
+Run docker image:
+
+
+```bash
+$ cd presto-docker
+$ docker-compose up
+```
+
+
+## Presto-cli
+
+Use the Presto CLI to connect to Presto
+
+
+```bash
+$ cd presto-docker
+$ docker exec -it <container_presto> presto
+```
+
+
+Execute a query against the tpch catalog
+```bash
+$ SELECT
    l.returnflag,
    l.linestatus,
    sum(l.quantity)                                       AS sum_qty,
@@ -31,10 +73,25 @@ SELECT
  ORDER BY
    l.returnflag,
    l.linestatus;
+```
 
 
 
-Others:
-https://github.com/johannestang/bigdata_stack
-https://docs.starburst.io/312-e/docker.html
-https://raw.githubusercontent.com/johannestang/bigdata_stack/master/docker-compose.yml
+## Resources
+
+More information
+
+```bash
+$ https://prestodb.io/docs/current/installation/deployment.html
+$ https://github.com/johannestang/bigdata_stack
+$ https://docs.starburst.io/312-e/docker.html
+$ https://raw.githubusercontent.com/johannestang/bigdata_stack/master/docker-compose.yml
+```
+
+
+
+
+## License
+
+[Apache License, Version 2.0](LICENSE.md)
+
