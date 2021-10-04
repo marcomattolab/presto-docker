@@ -3,6 +3,8 @@ This repository contains the docker-compose for "prestodb", version "0.262".
 
 The Presto UI is available on http://localhost:8080/ui/
 
+The used configuration on path "\etc\config.properties" is about a single machine for testing that will function as both a coordinator and worker.
+See https://prestodb.io/docs/current/installation/deployment.html#config-properties for other configurations.
 
 ## Table of Contents
 1. [Docker](#docker)
