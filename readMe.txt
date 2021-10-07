@@ -80,6 +80,28 @@ $ SELECT
 ```
 
 
+Execute a query against the postgres connector (postgresql)
+
+```bash
+$ SELECT * 
+  FROM postgresql.public.users;
+```
+
+
+Execute a query against the more connectors  JOIN (postgresql, tpch)
+
+```bash
+$ SELECT 
+	u.*, 
+	l.* 
+FROM 	postgresql.public.users as u, 
+		tpch.sf1.lineitem AS l 
+WHERE l.returnflag = u.name 
+and l.linenumber in (1, 2); 
+```
+
+
+
 
 ## Resources
 

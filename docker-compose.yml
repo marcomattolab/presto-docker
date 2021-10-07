@@ -1,5 +1,22 @@
 version: "3.5"
 services:
+  # Postgres
+  postgres:
+    image: postgres:13.3
+    container_name: postgres
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    expose:
+    - 5432
+    ports:
+      - 5432:5432
+    environment:
+         - POSTGRES_PASSWORD=postgres
+         - POSTGRES_USER=postgres
+         - POSTGRES_DB=dashboarddb
+    networks:
+      - bigdatanet
+
   # Presto
   presto-coordinator:
     image: prestodb:latest
@@ -8,9 +25,13 @@ services:
       - "8080:8080"
     volumes:
       - ./etc:/opt/presto/etc
+    depends_on:
+      - "postgres"
+    links:
+      - postgres
     networks:
-      - base_net
+      - bigdatanet
 
 networks:
-  base_net:
-    name: bigdatanet
+  bigdatanet:
+     driver: bridge
